@@ -14,18 +14,20 @@ apt install ffmpeg
 pip install pydub
 
 
-# importing libraries 
+# importando librerías
+
 import speech_recognition as sr 
 import os 
 from pydub import AudioSegment
 from pydub.silence import split_on_silence
 import aspose.words as aw
 
-# create a speech recognition object
+# crea un objeto de speech recognition
 r = sr.Recognizer()
 
-# a function that splits the audio file into chunks
-# and applies speech recognition
+# Creas una función que transforma el audio en pequeños trozos de audio, que facilita el funcionamiento de la librería
+# luego se aplica el reconocimiento de voz (speech recognition)
+
 def get_large_audio_transcription(path):
     """
     Splitting the large audio file into chunks
@@ -66,15 +68,15 @@ def get_large_audio_transcription(path):
     return whole_text
 
 
-#documento a transcribir
+## Aquí generas el documento a transcribir
     
-clase_13 = "CLASE_13.wav"
+clase_1 = "clase_1.wav"  # <- nombras el audio que deseas transcribir
 
 
-doc = aw.Document()
+doc = aw.Document() 
 
-builder = aw.DocumentBuilder(doc)
+builder = aw.DocumentBuilder(doc) # creas el documento sobre el que python transcribirá el audio cargado
 
-builder.write(get_large_audio_transcription(clase_13))
-doc.save("clase13.docx")
+builder.write(get_large_audio_transcription(clase_1)) # pasas el audio por la función que realizamos anteriormente, el cual será transcrito en el documento creado
+doc.save("clase1.docx") # guardas el documento
     
